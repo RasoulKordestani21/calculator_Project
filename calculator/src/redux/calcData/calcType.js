@@ -1,0 +1,1 @@
+export const BTN_CLCICK = "BTN_CLCICK";
