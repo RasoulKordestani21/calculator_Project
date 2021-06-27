@@ -1,0 +1,1 @@
+export { btnClick } from './calcData/calcAction'
