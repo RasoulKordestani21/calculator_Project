@@ -7,16 +7,18 @@
     gap: 5px;
 }
 
-button:hover{
+Button:hover{
     background-color: darkgray; 
 }
-
+.row{
+    display:flex;
+}
 .row button:not(:last-child){
     margin-right: 5px;
 }
 
 /* F0F0F0 */
-.btn{
+Button{
     width: 100px;
     height: 50px;
     background-color: #FAFAFA;

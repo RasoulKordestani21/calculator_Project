@@ -1,16 +1,21 @@
-import { BTN_CLCICK } from "./calcType";
-
+import { BTN_CLCICK, CURRENT_STATEMENT_MODIFIER } from "./calcType";
 const initialState = {
     btnType: {},
     clickedButton: null,
-    name:'00',
+    name: '00',
     number: 3,
-    val: null,
-   usage:null
+    val: '',
+    currentStatement: '',
+    tempCurrentStatement: '',
+    lastNumberSize: 0,
+    currentResult: 0,
+    calcParts: [],
+    statement:''
+
 }
 
-const btnClicked = (state = initialState, action) => {
-    
+const calcReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case BTN_CLCICK: return {
             ...state,
@@ -19,9 +24,20 @@ const btnClicked = (state = initialState, action) => {
             name: state.name + '0',
             number: state.number + 1,
             val: action.value,
-            usage:action.usage
+            currentStatement: state.currentStatement + action.value,
+            tempCurrentStatement: state.currentStatement + action.value,
+            lastNumberSize: action.lastNumberSize,
+            statement: action.statement,
+            // currentResult:state.currentResult+10,
+            btnType: console.log('@@@@@@@'),
         }
-
+        case CURRENT_STATEMENT_MODIFIER: return {
+            btnType: console.log('done'),
+            ...state,
+            currentResult: action.res,
+            btnType:console.log(state.tempCurrentStatement),
+            tempCurrentStatement: state.currentStatement.substr(0, state.currentStatement.length - state.val.length)
+        }
         default: return {
             ...state
         }
@@ -32,4 +48,4 @@ const btnClicked = (state = initialState, action) => {
 
 }
 
-export default btnClicked;
+export default calcReducer;
